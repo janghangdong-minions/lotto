@@ -15,7 +15,7 @@ func main() {
 		fmt.Println("bae seo young")
 		os.Exit(0)
 	} else if *flagSol {
-		fmt.Println("lim sol leaf")
+		fmt.Println("lim sol Leaf")
 		os.Exit(0)
 	} else {
 		flag.Usage()
