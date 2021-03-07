@@ -6,11 +6,13 @@ import (
 	"os"
 )
 
-func main() {
-	flagBae := flag.Bool("bae", false, "name of bae")
-	flagSol := flag.Bool("sol", false, "name of solip")
-	flagkok := flag.Bool("kok", false, "nick of kokbee")
+var (
+	flagBae = flag.Bool("bae", false, "name of bae")
+	flagSol = flag.Bool("sol", false, "name of solip")
+	flagkok = flag.Bool("kok", false, "nick of kokbee")
+)
 
+func main() {
 	flag.Parse()
 
 	if *flagBae {
