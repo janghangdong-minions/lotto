@@ -15,7 +15,7 @@ func main() {
 	if *flagBae {
 		fmt.Println("bae seo young")
 		os.Exit(0)
-	else if *flagkok {
+	} else if *flagkok {
 		fmt.Println("nickname kokbee")
 		os.Exit(0)
 	} else {
