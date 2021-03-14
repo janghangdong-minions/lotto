@@ -11,6 +11,7 @@ func webserver() {
 	http.HandleFunc("/bae", handleBae)
 	http.HandleFunc("/Man", handleMan)
 	http.HandleFunc("/sol", handleSol)
+	http.HandleFunc("/kok", handleKok)
 
 	err := http.ListenAndServe(*flagHTTPPort, nil) //nil의 정확한 용도를 이슈로 만들어봅시당.
 	if err != nil {
@@ -32,4 +33,8 @@ func handleMan(w http.ResponseWriter, r *http.Request) {
 
 func handleSol(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "hello, %s", "sol")
+}
+
+func handleKok(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "hello, %s", "kok")
 }
