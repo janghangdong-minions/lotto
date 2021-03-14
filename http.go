@@ -9,6 +9,7 @@ import (
 func webserver() {
 	http.HandleFunc("/", handleInit)
 	http.HandleFunc("/bae", handleBae)
+	http.HandleFunc("/Man", handleMan)
 
 	err := http.ListenAndServe(*flagHTTPPort, nil) //nil의 정확한 용도를 이슈로 만들어봅시당.
 	if err != nil {
@@ -22,4 +23,8 @@ func handleInit(w http.ResponseWriter, r *http.Request) {
 
 func handleBae(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "hello, %s", "bae")
+}
+
+func handleMan(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "hello, %s", "Man")
 }
