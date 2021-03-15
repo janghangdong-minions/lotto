@@ -17,7 +17,8 @@ func serviceIP() (string, error) {
 		if iface.Flags&net.FlagUp == 0 {
 			continue //interface down
 		}
-		// A 클래스 ip입니다.
+		// 127.x.x.x 은 A 클래스 ip입니다.
+		// https://en.wikipedia.org/wiki/Classful_network#Classful_addressing_definition
 		// 자기자신의 ip를 루프백이라고 합니다. 자기자신과 클래스의 ip를 체크하는 조건문
 		if iface.Flags&net.FlagLoopback != 0 {
 			continue // loopback interface
@@ -35,7 +36,7 @@ func serviceIP() (string, error) {
 			case *net.IPAddr:
 				ip = v.IP
 			}
-			// 루프백은 경우 패스
+			// 루프백인 경우 패스
 			if ip == nil || ip.IsLoopback() {
 				continue
 			}
