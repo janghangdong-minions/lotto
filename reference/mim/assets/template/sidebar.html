@@ -1,0 +1,74 @@
+{{ define "sidebar" }}
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+<!-- Sidebar - Brand -->
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+  <div class="sidebar-brand-icon rotate-n-15">
+      logo
+  </div>
+  <div class="sidebar-brand-text mx-3">Title</div>
+</a>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading"  style="position: relative; ">
+  <div >
+    <span style="font-size : 13px;">Main</span>
+  </div>
+</div>
+
+<!-- Nav Item - Dashboard -->
+<li class="nav-item active">
+  <a class="nav-link" href="#">
+    <i class="fas fa-fw fa-chart-bar"></i>
+    <span>Main Page</span>
+  </a>
+</li>
+
+<!-- Nav Item - Dashboard2 -->
+<li class="nav-item">
+  <a class="nav-link" href="#">
+    <i class="fas fa-fw fa-chart-pie"></i>
+    <span>Main Page 2</span>
+  </a>
+</li>
+
+<hr class="sidebar-divider">
+<!-- Heading -->
+<div class="sidebar-heading">
+  <div>
+  Page
+  </div>
+</div>
+
+<li class="nav-item">
+  <a class="nav-link" href="#">
+    <i class="fas fa-fw fa-calendar-alt"></i>
+    <span>Sub Page</span></a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="#">
+    <i class="fas fa-fw fa-calendar-alt"></i>
+    <span>Sub Page 2</span></a>
+</li>
+
+<hr class="sidebar-divider">
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+    <i class="fas fa-fw fa-folder"></i>
+    <span>Admin</span></a>
+  </a>
+  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <h6 class="collapse-header">Page</h6>
+      <a class="collapse-item" href="#">Page</a>
+      <a class="collapse-item" href="#">Page 2</a>
+      <div class="collapse-divider"></div>
+    </div>
+  </div>
+</li>
+</ul>
+{{ end }}

@@ -1,0 +1,27 @@
+{{ define "base" }}
+<!--DOCYTPE html-->
+<html>
+<!--head-->
+{{ template "header" }}
+<!--End haed-->
+<body>
+  <div id="wrapper">
+    {{ template "sidebar" }}
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+      {{ template "topbar" }}
+      <!-- Start handler -->
+      {{ template "index" }}
+      <!-- End handler-->
+      {{ template "footer" }}
+      </div>
+      <!-- End Main Content -->
+    </div>
+    {{ template "scroll" }}
+  </div>
+<!-- End Page Wrapper -->
+</body>
+{{ template "script" }}
+</html>
+{{ end }}
