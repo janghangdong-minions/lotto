@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -21,7 +20,18 @@ func webserver() {
 }
 
 func handleInit(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "hello world")
+	i, err := template.ParseFiles(
+		"assets/html/header.html",
+		"assets/html/init.html",
+		"assets/html/footer.html",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = i.ExecuteTemplate(w, "init", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func handleBae(w http.ResponseWriter, r *http.Request) {
@@ -55,9 +65,31 @@ func handleMan(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleSol(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello, %s", "sol")
+	i, err := template.ParseFiles(
+		"assets/html/header.html",
+		"assets/html/sol.html",
+		"assets/html/footer.html",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = i.ExecuteTemplate(w, "sol", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func handleKok(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello, %s", "kok")
+	i, err := template.ParseFiles(
+		"assets/html/header.html",
+		"assets/html/kok.html",
+		"assets/html/footer.html",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = i.ExecuteTemplate(w, "kok", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
