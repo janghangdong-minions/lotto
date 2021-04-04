@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -10,7 +9,7 @@ import (
 func webserver() {
 	http.HandleFunc("/", handleInit)
 	http.HandleFunc("/bae", handleBae)
-	http.HandleFunc("/Man", handleMan)
+	http.HandleFunc("/man", handleMan)
 	http.HandleFunc("/sol", handleSol)
 	http.HandleFunc("/kok", handleKok)
 
@@ -51,7 +50,18 @@ func handleBae(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleMan(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello, %s", "Man")
+	i, err := template.ParseFiles(
+		"assets/html/header.html",
+		"assets/html/man.html",
+		"assets/html/footer.html",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = i.ExecuteTemplate(w, "man", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func handleSol(w http.ResponseWriter, r *http.Request) {
