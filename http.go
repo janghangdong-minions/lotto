@@ -21,7 +21,18 @@ func webserver() {
 }
 
 func handleInit(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "hello world")
+	i, err := template.ParseFiles(
+		"assets/html/header.html",
+		"assets/html/init.html",
+		"assets/html/footer.html",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = i.ExecuteTemplate(w, "init", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func handleBae(w http.ResponseWriter, r *http.Request) {
