@@ -40,7 +40,18 @@ func handleBae(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleMan(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello, %s", "Man")
+	i, err := template.ParseFiles(
+		"assets/html/header.html",
+		"assets/html/pokari.html",
+		"assets/html/footer.html",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = i.ExecuteTemplate(w, "man", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func handleSol(w http.ResponseWriter, r *http.Request) {
