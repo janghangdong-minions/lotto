@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 )
@@ -24,7 +25,18 @@ func handleInit(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleBae(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello, %s", "bae")
+	i, err := template.ParseFiles(
+		"assets/html/header.html",
+		"assets/html/bae.html",
+		"assets/html/footer.html",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = i.ExecuteTemplate(w, "bae", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func handleMan(w http.ResponseWriter, r *http.Request) {
