@@ -48,5 +48,16 @@ func handleSol(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleKok(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello, %s", "kok")
+	i, err := template.ParseFiles(
+		"assets/html/header.html",
+		"assets/html/kok.html",
+		"assets/html/footer.html",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = i.ExecuteTemplate(w, "kok", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
