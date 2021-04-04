@@ -10,7 +10,7 @@ import (
 func webserver() {
 	http.HandleFunc("/", handleInit)
 	http.HandleFunc("/bae", handleBae)
-	http.HandleFunc("/Man", handleMan)
+	http.HandleFunc("/man", handleMan)
 	http.HandleFunc("/sol", handleSol)
 	http.HandleFunc("/kok", handleKok)
 
@@ -42,7 +42,7 @@ func handleBae(w http.ResponseWriter, r *http.Request) {
 func handleMan(w http.ResponseWriter, r *http.Request) {
 	i, err := template.ParseFiles(
 		"assets/html/header.html",
-		"assets/html/pokari.html",
+		"assets/html/man.html",
 		"assets/html/footer.html",
 	)
 	if err != nil {
