@@ -13,6 +13,9 @@ func webserver() {
 	http.HandleFunc("/sol", handleSol)
 	http.HandleFunc("/kok", handleKok)
 
+	fs := http.FileServer(http.Dir("assets/"))
+	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
+
 	err := http.ListenAndServe(*flagHTTPPort, nil) //nil의 정확한 용도를 이슈로 만들어봅시당.
 	if err != nil {
 		log.Fatal(err)
