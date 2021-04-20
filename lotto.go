@@ -13,7 +13,7 @@ var (
 	flagGenNum   = flag.Bool("gennum", false, "generating random numbers")
 	flagRangeMin = flag.Int("rmin", 1, "min value for generating random numbers")
 	flagRangeMax = flag.Int("rmax", 45, "max value for generating random numbers")
-	flagRange    = flag.Int("r", 3, "range value for generating random numbers ")
+	flagRange    = flag.Int("r", 3, "range for generating random numbers")
 )
 
 // GenRandomNums 랜덤 값 출력
