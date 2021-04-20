@@ -40,7 +40,6 @@ func handleInit(w http.ResponseWriter, r *http.Request) {
 func handleBae(w http.ResponseWriter, r *http.Request) {
 	i, err := template.ParseFiles(
 		"assets/html/header.html",
-		"assets/html/bae.html",
 		"assets/html/footer.html",
 	)
 	if err != nil {
@@ -55,7 +54,6 @@ func handleBae(w http.ResponseWriter, r *http.Request) {
 func handleMan(w http.ResponseWriter, r *http.Request) {
 	i, err := template.ParseFiles(
 		"assets/html/header.html",
-		"assets/html/man.html",
 		"assets/html/footer.html",
 	)
 	if err != nil {
@@ -70,7 +68,6 @@ func handleMan(w http.ResponseWriter, r *http.Request) {
 func handleSol(w http.ResponseWriter, r *http.Request) {
 	i, err := template.ParseFiles(
 		"assets/html/header.html",
-		"assets/html/sol.html",
 		"assets/html/footer.html",
 	)
 	if err != nil {
@@ -85,7 +82,6 @@ func handleSol(w http.ResponseWriter, r *http.Request) {
 func handleKok(w http.ResponseWriter, r *http.Request) {
 	i, err := template.ParseFiles(
 		"assets/html/header.html",
-		"assets/html/kok.html",
 		"assets/html/footer.html",
 	)
 	if err != nil {
