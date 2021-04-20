@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"time"
 )
 
 var (
@@ -16,8 +17,9 @@ var (
 func GenRandomNums() {
 	// 로또 1~45까지 숫자 중 7개의 숫자를 뽑는다.
 	min := 1
-	max := 45
+	max := 46 //max-1이 최대랜덤값
 	for i := 0; i < 7; i++ {
+		rand.Seed(time.Now().UnixNano())
 		fmt.Println(rand.Intn(max-min) + min)
 	}
 
