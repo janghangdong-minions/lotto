@@ -10,7 +10,7 @@ import (
 
 var (
 	flagHTTPPort = flag.String("http", "", "webservice port number")
-	flagGenNum   = flag.Bool("gennum", false, "generating non-overlaped random number")
+	flagGenNum   = flag.Bool("gennum", false, "generating random numbers")
 )
 
 func GenRandomNums() {
