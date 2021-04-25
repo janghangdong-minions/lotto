@@ -28,8 +28,7 @@ func handleInit(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	l := new(LottoNum)
-	l.BasicNums = []int{1, 2, 3, 4, 5, 6}
+	l := GenRandomNums(1, 45, 7)
 
 	err = i.ExecuteTemplate(w, "init", l)
 	if err != nil {
