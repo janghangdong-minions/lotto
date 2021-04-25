@@ -28,7 +28,7 @@ func handleInit(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	l := GenRandomNums(1, 45, 7)
+	l := GenRandomNums(*flagRangeMin, *flagRangeMax, *flagRange)
 
 	err = i.ExecuteTemplate(w, "init", l)
 	if err != nil {
