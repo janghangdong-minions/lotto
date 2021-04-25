@@ -27,7 +27,11 @@ func handleInit(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = i.ExecuteTemplate(w, "init", nil)
+
+	l := new(LottoNum)
+	l.BasicNums = []int{1, 2, 3, 4, 5, 6}
+
+	err = i.ExecuteTemplate(w, "init", l)
 	if err != nil {
 		log.Fatal(err)
 	}
