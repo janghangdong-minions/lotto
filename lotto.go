@@ -4,9 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"math/rand"
 	"os"
-	"time"
 )
 
 var (
@@ -16,21 +14,6 @@ var (
 	flagRangeMax = flag.Int("rmax", 45, "max value for generating random numbers")
 	flagRange    = flag.Int("r", 7, "range for generating random numbers")
 )
-
-// GenRandomNums 랜덤 값 출력
-func GenRandomNums(min, max, ranges int) LottoNum {
-	// 로또 1~45까지 숫자 중 7개의 숫자를 뽑는다.
-	var nums []int
-	for i := 0; i < ranges; i++ {
-		rand.Seed(time.Now().UnixNano())
-		nums = append(nums, rand.Intn(max-min)+min)
-	}
-
-	l := new(LottoNum)
-	l.BasicNums = nums
-
-	return *l
-}
 
 func main() {
 	flag.Parse()
