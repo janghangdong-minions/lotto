@@ -8,3 +8,17 @@
     text-align:center;
     background:#f7d033;
 }
+
+
+.circle-kok{
+    min-width:22px;
+    min-height:22px;
+    border-radius: 50%;
+    line-height:1;
+    padding: 2px;
+    text-align:center;
+    display: inline-block;
+    vertical-align: middle;
+    background: radial-gradient(ellipse at top, #2badf8, transparent),
+    radial-gradient(ellipse at bottom, #56dbaf, transparent);
+}
