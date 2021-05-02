@@ -1,38 +1,28 @@
-.circle {
-    width:50px;
-    height:50px;
-    border-radius:50px;
-    font-size:20px;
-    color:#fff;
-    line-height:50px;
+.circle{
+    /*폰트*/
+    font-size: 1.2em;
+    font-weight: bold;
     text-align:center;
-    background:#f7d033;
-}
 
+    /*circle 사이즈 및 비율*/
+    min-width:3.5em;
+    min-height:3.5em;
+    line-height:3.2em;
 
-.circle-kok{
-    min-width:22px;
-    min-height:22px;
+    /*circle 테두리*/
+    border: solid;
+    border-color: rgb(61, 178, 207);
+    border-width: 0.1em;
     border-radius: 50%;
-    line-height:1;
+    
+    /*circle 영역 및 간격*/
     padding: 2px;
-    text-align:center;
+    margin-right: 10px;
+
+    /*배경 및 색*/
     display: inline-block;
+    color:#fff;
     vertical-align: middle;
     background: radial-gradient(ellipse at top, #2badf8, transparent),
     radial-gradient(ellipse at bottom, #56dbaf, transparent);
 }
-
-.sCircle {
-    background: radial-gradient(#e66465, #9198e5);
-    border-radius: 0.8em;
-    -moz-border-radius: 0.8em;
-    -webkit-border-radius: 0.8em;
-    color: #ffffff;
-    display: inline-block;
-    font-weight: bold;
-    line-height: 1.6em;
-    margin-right: 10px;
-    text-align: center;
-    width: 1.6em; 
-  }
