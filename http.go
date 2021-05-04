@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+var funcMap = template.FuncMap{
+	"PaddingNum": PaddingNum,
+}
+
 func webserver() {
 	http.HandleFunc("/", handleInit)
 
@@ -19,7 +23,8 @@ func webserver() {
 }
 
 func handleInit(w http.ResponseWriter, r *http.Request) {
-	i, err := template.ParseFiles(
+	newTpl := template.New("").Funcs(funcMap)
+	t, err := newTpl.ParseFiles(
 		"assets/html/header.html",
 		"assets/html/init.html",
 		"assets/html/footer.html",
@@ -30,7 +35,7 @@ func handleInit(w http.ResponseWriter, r *http.Request) {
 
 	l := GenRandomNums(*flagRangeMin, *flagRangeMax, *flagRange)
 
-	err = i.ExecuteTemplate(w, "init", l)
+	err = t.ExecuteTemplate(w, "init", l)
 	if err != nil {
 		log.Fatal(err)
 	}
