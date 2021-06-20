@@ -11,7 +11,7 @@ import (
 // LoadTemplates 함수는 템플릿을 로딩합니다.
 func LoadTemplates() (*template.Template, error) {
 	t := template.New("").Funcs(funcMap)
-	t, err := vfstemplate.ParseGlob(assets, t, "/template/*.html")
+	t, err := vfstemplate.ParseGlob(assets, t, "/html/*.html")
 	return t, err
 }
 
