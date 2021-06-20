@@ -3,11 +3,15 @@ package main
 import (
 	"flag"
 	"fmt"
+	"html/template"
 	"log"
 	"os"
 )
 
 var (
+	// TEMPLATES 는 lotto에서 사용하는 템플릿 글로벌 변수이다.
+	TEMPLATES = template.New("")
+
 	flagHTTPPort = flag.String("http", "", "webservice port number")
 	flagGenNum   = flag.Bool("gennum", false, "generating random numbers")
 	flagRangeMin = flag.Int("rmin", 1, "min value for generating random numbers")
