@@ -9,14 +9,18 @@
         <span class="circle">{{PaddingNum .}}</span>
         {{end}}
     </div>
+    <div id="addRend">
+    </div>
     <div class="py-3">
         <div id="button_group">
             <button class="btn btn-info" id="reload_btn" onClick="window.location.reload()">Reload</button>
+            <button class="btn btn-info" id="reload_btn2" onClick="rendomData()">Add</button>
         </div>
     </div>
 </div>  
 <!--javascript-->
 <script src="/assets/bootstrap-5/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/assets/js/lotto.js"></script>
 {{template "footer"}}
 {{end}}
