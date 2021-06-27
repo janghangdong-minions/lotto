@@ -19,3 +19,35 @@ function setNumberColor(){
 }
 //로토번호들의 컬러를바꾼다.
 setNumberColor();
+
+var nums = 0;
+
+function rendomData() {
+    $.ajax({
+        url: "/rend" ,
+        type: "GET",
+        accepts: {
+          mycustomtype: 'application/json'
+        },
+        success:function(data){
+            console.log(data);
+            let addDiv = document.getElementById("addRend");
+            console.log(addDiv);
+            let addSpan = document.getElementById(`rend_${nums}`);
+            if (!addSpan){
+                addDiv.innerHTML += `<div id="rend_${nums}">`
+                for (let index = 0; index < nums; index++) {
+                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[0]}</span>`;
+                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[1]}</span>`;
+                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[2]}</span>`;
+                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[3]}</span>`;
+                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[4]}</span>`;
+                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[5]}</span>`;
+                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[6]}</span>`;
+                }
+                addDiv.innerHTML += `</div><br />`
+                nums +=1;
+            }
+        }
+      });
+};

@@ -6,7 +6,8 @@ import (
 )
 
 func handleRendom(w http.ResponseWriter, r *http.Request) {
-	data, err := json.Marshal("test")
+	nums := GenRandomNums(*flagRangeMin, *flagRangeMax, *flagRange)
+	data, err := json.Marshal(nums)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
