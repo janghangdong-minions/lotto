@@ -9,7 +9,8 @@ import (
 )
 
 var (
-	// TEMPLATES 는 lotto에서 사용하는 템플릿 글로벌 변수이다.
+	// TEMPLATES 는 lotto에서 사용하는 템플릿 글로벌 변수입니다.
+	// VFS 내부의 html파일을 담기 위해 사용합니다.
 	TEMPLATES = template.New("")
 
 	flagHTTPPort = flag.String("http", "", "webservice port number")

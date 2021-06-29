@@ -9,9 +9,12 @@ import (
 )
 
 // LoadTemplates 함수는 템플릿을 로딩합니다.
+// httpfs라이브러리를 이용합니다.
+// vfsgen으로 만들어진 VFS 폴더 내의 html파일과 빈 template을 연결합니다.
 func LoadTemplates() (*template.Template, error) {
 	t := template.New("").Funcs(funcMap)
 	t, err := vfstemplate.ParseGlob(assets, t, "/html/*.html")
+	// assets는 assets_generate.go의 결과파일인 assets_vfsdata.go안에 생기는 변수입니다. VFS 구조를 담고 있습니다.
 	return t, err
 }
 
