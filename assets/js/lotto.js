@@ -22,20 +22,20 @@ setNumberColor();
 
 var nums = 0;
 
-function rendomData() {
+function randomData() {
     $.ajax({
-        url: "/rend" ,
+        url: "/rand" ,
         type: "GET",
         accepts: {
           mycustomtype: 'application/json'
         },
         success:function(data){
             console.log(data);
-            let addDiv = document.getElementById("addRend");
+            let addDiv = document.getElementById("addRand");
             console.log(addDiv);
-            let addSpan = document.getElementById(`rend_${nums}`);
+            let addSpan = document.getElementById(`rand_${nums}`);
             if (!addSpan){
-                addDiv.innerHTML += `<div id="rend_${nums}">`
+                addDiv.innerHTML += `<div id="rand_${nums}">`
                 for (let index = 0; index < nums; index++) {
                     addDiv.innerHTML += `<span class="circle">${data.BasicNums[0]}</span>`;
                     addDiv.innerHTML += `<span class="circle">${data.BasicNums[1]}</span>`;
