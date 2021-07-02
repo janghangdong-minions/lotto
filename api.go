@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func handleRendom(w http.ResponseWriter, r *http.Request) {
+func handleRandom(w http.ResponseWriter, r *http.Request) {
 	nums := GenRandomNums(*flagRangeMin, *flagRangeMax, *flagRange)
 	data, err := json.Marshal(nums)
 	if err != nil {
