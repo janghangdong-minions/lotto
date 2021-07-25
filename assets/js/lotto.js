@@ -1,4 +1,9 @@
 //lotto js 파일
+const LS = "numSet";
+let lsNums = [];
+const ol = document.getElementById("favNum");
+
+//범위에 따라 특정컬러로 엘리먼트의 색을 바꾼다.
 function setNumberColor(){
     numObj = document.getElementsByClassName('circle');
     
@@ -17,37 +22,82 @@ function setNumberColor(){
         }
     }
 }
+
+//로토넘버를 재생성해주는 함수
+function changeNumber (){
+    fetch('/rand') //[url,option] 옵션값을 입력하지 않은면 GET 매소드로 간주한다.
+    .then((response) => response.json())
+    .then((data) => {
+        return data
+    })
+    .then(function(nums){
+        mainNumber = document.getElementById("main");
+        mainNumber.innerHTML="";
+        console.log(nums)
+        for (let index = 0; index < nums.BasicNums.length; index++) {
+            mainNumber.innerHTML += `<span class="circle">${nums.BasicNums[index]}</span>`;
+        }
+        setNumberColor();
+    })
+
+}
+
+//원하는 로토넘버를 로컬스토리지에 저장한다.
+function putNumber (){
+    ol.innerHTML='';  //리스트초기화
+    let numSets = [];
+    let numDiv = document.getElementById("main");
+    numSpans = numDiv.getElementsByClassName("circle");
+    for (index = 0; index < numSpans.length; index++){
+        numSets.push(numSpans[index].textContent);
+    }
+    const newId = lsNums.length + 1;
+    const numSetObj = {
+        id : newId,
+        num : numSets
+    }
+    lsNums.push(numSetObj);
+    localStorage.setItem(LS,JSON.stringify(lsNums));
+    loadLS()
+}
+
+
+
+//로컬스토리지에 담은 로토넘버를 보여준다.
+function loadLS (){  
+    let s = localStorage.getItem(LS);
+    if(s !== null ){
+        const parsedNumSet = JSON.parse(s);
+        //lsNums.push(parsedNumSet);
+        parsedNumSet.forEach(function(numSet){
+            showFavNum(numSet.num);
+        });
+    }
+}
+
+function loadLS2 (){
+    let v = localStorage.getItem(LS);
+    if(v !== null ){
+        const parsedNumSet = JSON.parse(s);
+        lsNums.push(parsedNumSet);
+    }
+}
+
+
+
+//로컬스토리지에서 불러온 넘버를 렌더한다.
+function showFavNum(num){
+    let li = document.createElement("li");
+    for (index = 0; index < num.length; index++){
+        li.innerHTML += `<span class="circle">${num[index]}</span>`;
+    }
+    ol.appendChild(li);
+    setNumberColor();
+}
+
+
 //로토번호들의 컬러를바꾼다.
 setNumberColor();
-
-var nums = 0;
-
-function randomData() {
-    $.ajax({
-        url: "/rand" ,
-        type: "GET",
-        accepts: {
-          mycustomtype: 'application/json'
-        },
-        success:function(data){
-            console.log(data);
-            let addDiv = document.getElementById("addRand");
-            console.log(addDiv);
-            let addSpan = document.getElementById(`rand_${nums}`);
-            if (!addSpan){
-                addDiv.innerHTML += `<div id="rand_${nums}">`
-                for (let index = 0; index < nums; index++) {
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[0]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[1]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[2]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[3]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[4]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[5]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[6]}</span>`;
-                }
-                addDiv.innerHTML += `</div><br />`
-                nums +=1;
-            }
-        }
-      });
-};
+//로컬스토리지 로드
+loadLS2();
+loadLS();
