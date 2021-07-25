@@ -1,7 +1,4 @@
 //lotto js 파일
-const LS = "numSet";
-let lsNums = [];
-const ol = document.getElementById("favNum");
 
 //범위에 따라 특정컬러로 엘리먼트의 색을 바꾼다.
 function setNumberColor(){
@@ -41,63 +38,5 @@ function changeNumber (){
     })
 
 }
-
-//원하는 로토넘버를 로컬스토리지에 저장한다.
-function putNumber (){
-    ol.innerHTML='';  //리스트초기화
-    let numSets = [];
-    let numDiv = document.getElementById("main");
-    numSpans = numDiv.getElementsByClassName("circle");
-    for (index = 0; index < numSpans.length; index++){
-        numSets.push(numSpans[index].textContent);
-    }
-    const newId = lsNums.length + 1;
-    const numSetObj = {
-        id : newId,
-        num : numSets
-    }
-    lsNums.push(numSetObj);
-    localStorage.setItem(LS,JSON.stringify(lsNums));
-    loadLS()
-}
-
-
-
-//로컬스토리지에 담은 로토넘버를 보여준다.
-function loadLS (){  
-    let s = localStorage.getItem(LS);
-    if(s !== null ){
-        const parsedNumSet = JSON.parse(s);
-        //lsNums.push(parsedNumSet);
-        parsedNumSet.forEach(function(numSet){
-            showFavNum(numSet.num);
-        });
-    }
-}
-
-function loadLS2 (){
-    let v = localStorage.getItem(LS);
-    if(v !== null ){
-        const parsedNumSet = JSON.parse(s);
-        lsNums.push(parsedNumSet);
-    }
-}
-
-
-
-//로컬스토리지에서 불러온 넘버를 렌더한다.
-function showFavNum(num){
-    let li = document.createElement("li");
-    for (index = 0; index < num.length; index++){
-        li.innerHTML += `<span class="circle">${num[index]}</span>`;
-    }
-    ol.appendChild(li);
-    setNumberColor();
-}
-
-
 //로토번호들의 컬러를바꾼다.
 setNumberColor();
-//로컬스토리지 로드
-loadLS2();
-loadLS();
