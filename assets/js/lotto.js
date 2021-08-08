@@ -27,7 +27,7 @@ function changeNumber (){
     .then((data) => {
         return data
     })
-    .then(function(nums){
+    .then(nums => {
         mainNumber = document.getElementById("main");
         mainNumber.innerHTML="";
         console.log(nums)
