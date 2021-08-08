@@ -24,9 +24,6 @@ function setNumberColor(){
 function changeNumber (){
     fetch('/rand') //[url,option] 옵션값을 입력하지 않은면 GET 매소드로 간주한다.
     .then((response) => response.json())
-    .then((data) => {
-        return data
-    })
     .then(nums => {
         mainNumber = document.getElementById("main");
         mainNumber.innerHTML="";
