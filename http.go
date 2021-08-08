@@ -31,7 +31,7 @@ func webserver() {
 	TEMPLATES = vfsTemplate
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(assets)))
 	http.HandleFunc("/", handleInit)
-	http.HandleFunc("/api/randomnum", handleRandom)
+	http.HandleFunc("/api/randomnum", GetRandomnum)
 
 	err = http.ListenAndServe(*flagHTTPPort, nil) //nil의 정확한 용도를 이슈로 만들어봅시당.
 	if err != nil {
