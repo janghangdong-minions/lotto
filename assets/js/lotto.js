@@ -22,7 +22,7 @@ function setNumberColor(){
 
 //로토넘버를 재생성해주는 함수
 function changeNumber (){
-    fetch('/rand') //[url,option] 옵션값을 입력하지 않은면 GET 매소드로 간주한다.
+    fetch('/api/randomnum') //[url,option] 옵션값을 입력하지 않은면 GET 매소드로 간주한다.
     .then((response) => response.json())
     .then(nums => {
         mainNumber = document.getElementById("main");
