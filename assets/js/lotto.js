@@ -1,4 +1,6 @@
 //lotto js 파일
+
+//범위에 따라 특정컬러로 엘리먼트의 색을 바꾼다.
 function setNumberColor(){
     numObj = document.getElementsByClassName('circle');
     
@@ -17,37 +19,21 @@ function setNumberColor(){
         }
     }
 }
+
+//로토넘버를 재생성해주는 함수
+function changeNumber (){
+    fetch('/api/randomnum') //[url,option] 옵션값을 입력하지 않은면 GET 매소드로 간주한다.
+    .then((response) => response.json())
+    .then(nums => {
+        mainNumber = document.getElementById("main");
+        mainNumber.innerHTML="";
+        console.log(nums)
+        for (let index = 0; index < nums.BasicNums.length; index++) {
+            mainNumber.innerHTML += `<span class="circle">${nums.BasicNums[index]}</span>`;
+        }
+        setNumberColor();
+    })
+
+}
 //로토번호들의 컬러를바꾼다.
 setNumberColor();
-
-var nums = 0;
-
-function randomData() {
-    $.ajax({
-        url: "/rand" ,
-        type: "GET",
-        accepts: {
-          mycustomtype: 'application/json'
-        },
-        success:function(data){
-            console.log(data);
-            let addDiv = document.getElementById("addRand");
-            console.log(addDiv);
-            let addSpan = document.getElementById(`rand_${nums}`);
-            if (!addSpan){
-                addDiv.innerHTML += `<div id="rand_${nums}">`
-                for (let index = 0; index < nums; index++) {
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[0]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[1]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[2]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[3]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[4]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[5]}</span>`;
-                    addDiv.innerHTML += `<span class="circle">${data.BasicNums[6]}</span>`;
-                }
-                addDiv.innerHTML += `</div><br />`
-                nums +=1;
-            }
-        }
-      });
-};
